@@ -1,0 +1,11 @@
+[package]
+name = "spacemap"
+version = "0.1.0"
+edition = "2021"
+description = "Forbidden output space checking — define regions that must remain empty, then verify nothing intrudes"
+license = "MIT"
+repository = "https://github.com/SuperInstance/spacemap"
+keywords = ["validation", "output", "forbidden", "boundaries", "audit"]
+categories = ["development-tools::testing", "data-structures"]
+
+[dependencies]
