@@ -68,7 +68,7 @@ Mark experimental or internal-only features as forbidden in production context. 
 | `negative_space_ratio()` | `f64` | % of forbidden space still clean (0.0–100.0) |
 | `is_clean()` | `bool` | No intrusions at all |
 | `audit()` | `AuditReport<K>` | Detailed report with counts, ratios, intrusion details |
-| `boundaries()` | `HashSet<K>` | Regions adjacent to forbidden zones (early warning) |
+| `boundaries()` | `HashSet<K>` | Occupied keys not in forbidden set (early warning) |
 | `merge(other)` | `()` | Combine two space maps |
 | `vacate(&key)` | `Option<V>` | Remove from occupied set |
 | `permit(&key)` | `bool` | Remove from forbidden set |

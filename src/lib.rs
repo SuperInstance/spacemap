@@ -26,7 +26,7 @@ pub struct AuditReport<K> {
     pub negative_space_ratio: f64,
     /// Whether the map is completely clean (no intrusions).
     pub is_clean: bool,
-    /// Regions adjacent to forbidden zones (early-warning boundary).
+    /// Occupied keys that are not in the forbidden set (potential early-warning layer).
     pub boundaries: HashSet<K>,
 }
 
@@ -154,18 +154,17 @@ where
         }
     }
 
-    /// Return the set of occupied regions that are **adjacent** to forbidden zones.
+    /// Return the set of occupied regions that are **not** forbidden.
     ///
-    /// In this implementation, "adjacent" means occupied regions whose keys
-    /// are present in the forbidden set's neighborhood — specifically, occupied
-    /// keys that are *not* themselves forbidden but share the same hash bucket
-    /// neighborhood. Since `SpaceMap` is generic over `K`, adjacency is defined
-    /// as: occupied keys that are exactly one step away from a forbidden key
-    /// in the `PartialOrd` / `Ord` sense when available, or simply occupied
-    /// keys that are not intrusions but coexist in the map.
+    /// This is an early-warning layer: these occupied keys are safe for now,
+    /// but if their keys were later added to the forbidden set, they would
+    /// become intrusions. Use this to monitor how close your occupied space
+    /// is to the forbidden boundary.
     ///
-    /// Practically, this returns occupied keys that are not themselves intrusions,
-    /// serving as an early-warning layer.
+    /// Note: this does **not** compute spatial adjacency (since `K` is generic).
+    /// It returns all occupied keys that are not intrusions — i.e., the
+    /// complement of [`check_intrusions`](Self::check_intrusions) within
+    /// the occupied set.
     pub fn boundaries(&self) -> HashSet<K> {
         self.occupied
             .keys()
