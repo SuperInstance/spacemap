@@ -1,6 +1,6 @@
 //! API response validation example — ensure forbidden fields never leak into responses.
 
-use spacemap::SpaceMap;
+use forbidden_zones::SpaceMap;
 
 fn main() {
     // Simulate a JSON API response as key-value pairs

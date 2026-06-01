@@ -1,6 +1,6 @@
 #![deny(unsafe_code)]
 
-//! # spacemap
+//! # forbidden-zones
 //!
 //! Forbidden output space checking. Define regions of your output space that
 //! must remain empty, then check if any actual output intrudes.
@@ -41,7 +41,7 @@ pub struct AuditReport<K> {
 /// # Example
 ///
 /// ```
-/// use spacemap::SpaceMap;
+/// use forbidden_zones::SpaceMap;
 ///
 /// let mut sm: SpaceMap<&str, i32> = SpaceMap::new();
 /// sm.occupy("zone_a", 42);

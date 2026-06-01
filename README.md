@@ -1,14 +1,14 @@
-# spacemap
+# forbidden-zones
 
 **Forbidden output space checking.** Define regions of your output space that must remain empty, then check if any actual output intrudes. Like a firewall for your data — define what's NOT allowed and verify nothing crosses the boundary.
 
-[![crates.io](https://img.shields.io/crates/v/spacemap.svg)](https://crates.io/crates/spacemap)
-[![docs.rs](https://docs.rs/spacemap/badge.svg)](https://docs.rs/spacemap)
+[![crates.io](https://img.shields.io/crates/v/forbidden-zones.svg)](https://crates.io/crates/forbidden-zones)
+[![docs.rs](https://docs.rs/forbidden-zones/badge.svg)](https://docs.rs/forbidden-zones)
 
 ## 30-Second Example
 
 ```rust
-use spacemap::SpaceMap;
+use forbidden_zones::SpaceMap;
 
 let mut sm: SpaceMap<&str, i32> = SpaceMap::new();
 
@@ -35,7 +35,7 @@ println!("Clean ratio: {:.1}%", report.negative_space_ratio);
 
 ## Why?
 
-Most validation tools check that things *are* present. `spacemap` checks that things *aren't*. This is useful anywhere you need to enforce negative constraints — regions where data should not exist.
+Most validation tools check that things *are* present. `forbidden-zones` checks that things *aren't*. This is useful anywhere you need to enforce negative constraints — regions where data should not exist.
 
 ## Use Cases
 
@@ -104,7 +104,7 @@ Mark experimental or internal-only features as forbidden in production context. 
 
 ```toml
 [dependencies]
-spacemap = "0.1"
+forbidden-zones = "0.1"
 ```
 
 ## License

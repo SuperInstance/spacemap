@@ -1,5 +1,5 @@
 [package]
-name = "spacemap"
+name = "forbidden-zones"
 version = "0.1.0"
 edition = "2021"
 description = "Forbidden output space checking — define regions that must remain empty, then verify nothing intrudes"

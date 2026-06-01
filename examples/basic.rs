@@ -1,6 +1,6 @@
 //! Basic usage example for spacemap.
 
-use spacemap::SpaceMap;
+use forbidden_zones::SpaceMap;
 
 fn main() {
     let mut map: SpaceMap<&str, i32> = SpaceMap::new();
