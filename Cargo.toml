@@ -1,6 +1,6 @@
 [package]
 name = "forbidden-zones"
-version = "0.1.0"
+version = "0.2.0"
 edition = "2021"
 description = "Forbidden output space checking — define regions that must remain empty, then verify nothing intrudes"
 license = "MIT"
@@ -8,4 +8,9 @@ repository = "https://github.com/SuperInstance/spacemap"
 keywords = ["validation", "output", "forbidden", "boundaries", "audit"]
 categories = ["development-tools::testing", "data-structures"]
 
+[features]
+default = []
+serde = ["dep:serde"]
+
 [dependencies]
+serde = { version = "1", features = ["derive"], optional = true }

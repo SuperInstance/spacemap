@@ -11,8 +11,20 @@
 use std::collections::{HashMap, HashSet};
 use std::hash::Hash;
 
+#[cfg(feature = "serde")]
+use serde::{Serialize, Deserialize};
+
 /// Detailed audit report produced by [`SpaceMap::audit`].
 #[derive(Debug, Clone)]
+#[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
+#[cfg_attr(
+    feature = "serde",
+    serde(bound(serialize = "K: Serialize + Eq + Hash"))
+)]
+#[cfg_attr(
+    feature = "serde",
+    serde(bound(deserialize = "K: Deserialize<'de> + Eq + Hash"))
+)]
 pub struct AuditReport<K> {
     /// Total number of occupied regions.
     pub occupied_count: usize,
@@ -52,6 +64,15 @@ pub struct AuditReport<K> {
 /// assert!(!sm.is_clean());
 /// ```
 #[derive(Debug, Clone)]
+#[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
+#[cfg_attr(
+    feature = "serde",
+    serde(bound(serialize = "K: Serialize + Eq + Hash, V: Serialize"))
+)]
+#[cfg_attr(
+    feature = "serde",
+    serde(bound(deserialize = "K: Deserialize<'de> + Eq + Hash, V: Deserialize<'de>"))
+)]
 pub struct SpaceMap<K, V> {
     occupied: HashMap<K, V>,
     forbidden: HashSet<K>,
